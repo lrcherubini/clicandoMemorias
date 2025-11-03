@@ -1,0 +1,312 @@
+/* ===================================
+   Responsive Design - Mobile First
+   =================================== */
+
+/* Tablets e dispositivos médios */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    .journey-step[data-step="2"],
+    .journey-step[data-step="3"],
+    .journey-step[data-step="4"] {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .contact-info {
+        text-align: center;
+    }
+    
+    .contact-item {
+        text-align: center;
+    }
+}
+
+/* Tablets pequenos e smartphones grandes */
+@media (max-width: 768px) {
+    /* Navegação Mobile */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: var(--shadow-sm);
+        gap: 15px;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    /* Hero ajustes */
+    .hero {
+        padding: 100px 20px 50px;
+        min-height: 90vh;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1rem;
+    }
+    
+    /* Sections */
+    section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    
+    .intro-text {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+    
+    /* Journey Path */
+    .journey-path {
+        padding: 10px;
+    }
+    
+    .journey-step {
+        padding-left: 30px;
+        margin-bottom: 60px;
+    }
+    
+    .journey-path::before {
+        left: 15px;
+    }
+    
+    .journey-step::after {
+        left: 9px;
+    }
+    
+    .step-quote {
+        font-size: 1.3rem;
+    }
+    
+    .step-title {
+        font-size: 0.85rem;
+    }
+    
+    .testimonial {
+        font-size: 0.95rem;
+        padding-left: 25px;
+    }
+    
+    .testimonial::before {
+        font-size: 2rem;
+    }
+    
+    /* Portfolio */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .portfolio-item {
+        height: 350px;
+    }
+    
+    /* Artístico */
+    .artistic-gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .artistic-img {
+        height: 250px;
+    }
+    
+    /* About */
+    .about-text {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    
+    /* Contato */
+    .contact-wrapper {
+        gap: 30px;
+    }
+    
+    .contact-form {
+        padding: 20px;
+    }
+    
+    .map-container iframe {
+        height: 300px;
+    }
+    
+    /* CTA Buttons */
+    .cta-button {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 30px 0;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Smartphones pequenos */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    nav .container {
+        padding: 15px;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .hero {
+        padding: 90px 15px 40px;
+    }
+    
+    .hero h1 {
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+    
+    .hero .subtitle {
+        font-size: 0.95rem;
+    }
+    
+    section {
+        padding: 50px 0;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 30px;
+    }
+    
+    .journey-step {
+        padding-left: 25px;
+        margin-bottom: 50px;
+    }
+    
+    .step-quote {
+        font-size: 1.2rem;
+    }
+    
+    .testimonial {
+        font-size: 0.9rem;
+        padding-left: 20px;
+    }
+    
+    .portfolio-item {
+        height: 300px;
+    }
+    
+    .contact-form {
+        padding: 15px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+    
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Landscape orientation no mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 100px 20px 50px;
+    }
+    
+    section {
+        padding: 50px 0;
+    }
+}
+
+/* Dispositivos com tela muito larga */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero h1 {
+        font-size: 4rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .artistic-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Print styles */
+@media print {
+    nav,
+    .menu-toggle,
+    .cta-button,
+    .contact-form,
+    .map-container,
+    footer {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    section {
+        page-break-inside: avoid;
+    }
+    
+    .portfolio-item,
+    .artistic-img {
+        page-break-inside: avoid;
+    }
+}

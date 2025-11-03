@@ -1,0 +1,38 @@
+# robots.txt para Carla Padilha Fotografia
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://clicandomemorias.com.br/sitemap.xml
+
+# Bloquear arquivos de configuração
+Disallow: /CNAME
+Disallow: /README.md
+Disallow: /.git/
+
+# User-agents específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+# Bots de IA generativa (permite indexação para melhor descoberta)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Crawl delay para evitar sobrecarga
+Crawl-delay: 1
