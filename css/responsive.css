@@ -126,7 +126,51 @@
     .portfolio-item {
         height: 350px;
     }
-    
+
+    /* Lightbox Mobile */
+    .lightbox-close {
+        top: 15px;
+        right: 15px;
+        font-size: 2.5rem;
+        width: 40px;
+        height: 40px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        font-size: 2rem;
+        padding: 15px 20px;
+    }
+
+    .lightbox-prev {
+        left: 10px;
+    }
+
+    .lightbox-next {
+        right: 10px;
+    }
+
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+
+    .lightbox-image {
+        max-height: 70vh;
+        border-radius: 5px;
+    }
+
+    .lightbox-caption {
+        font-size: 1rem;
+        margin-top: 15px;
+        padding: 0 10px;
+    }
+
+    .lightbox-counter {
+        font-size: 0.85rem;
+        margin-top: 8px;
+    }
+
     /* Artístico */
     .artistic-gallery {
         grid-template-columns: 1fr;
@@ -226,7 +270,44 @@
     .portfolio-item {
         height: 300px;
     }
-    
+
+    /* Lightbox para telas muito pequenas */
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        font-size: 2rem;
+        width: 35px;
+        height: 35px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        font-size: 1.5rem;
+        padding: 10px 15px;
+    }
+
+    .lightbox-prev {
+        left: 5px;
+    }
+
+    .lightbox-next {
+        right: 5px;
+    }
+
+    .lightbox-caption {
+        font-size: 0.9rem;
+        margin-top: 10px;
+    }
+
+    .lightbox-counter {
+        font-size: 0.8rem;
+        margin-top: 5px;
+    }
+
+    .lightbox-image {
+        max-height: 60vh;
+    }
+
     .contact-form {
         padding: 15px;
     }
