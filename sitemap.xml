@@ -18,20 +18,26 @@
         <priority>0.9</priority>
     </url>
     
-    <!-- Seção: Portfólio -->
     <url>
         <loc>https://clicandomemorias.com.br/#portfolio</loc>
         <lastmod>2025-01-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
-    </url>
-    
-    <!-- Seção: Sobre -->
-    <url>
-        <loc>https://clicandomemorias.com.br/#sobre</loc>
-        <lastmod>2025-01-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://clicandomemorias.com.br/images/portfolio/familias/foto-1.jpg</image:loc>
+            <image:caption>Ensaio de família ao ar livre em Joinville</image:caption>
+            <image:title>Famílias</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://clicandomemorias.com.br/images/portfolio/gestantes/foto-1.jpg</image:loc>
+            <image:caption>Ensaio gestante em Joinville</image:caption>
+            <image:title>Gestantes</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://clicandomemorias.com.br/images/portfolio/15anos/foto-1.jpg</image:loc>
+            <image:caption>Ensaio de 15 anos em Joinville</image:caption>
+            <image:title>15 Anos</image:title>
+        </image:image>
     </url>
     
     <!-- Seção: Meu Olhar -->

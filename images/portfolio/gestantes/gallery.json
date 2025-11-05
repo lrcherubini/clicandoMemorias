@@ -1,0 +1,21 @@
+{
+  "title": "Gestantes",
+  "description": "A espera traduzida em luz e afeto",
+  "images": [
+    {
+      "filename": "foto-1.jpg",
+      "caption": "A espera do milagre",
+      "alt": "Ensaio gestante em Joinville"
+    },
+    {
+      "filename": "foto-2.jpg",
+      "caption": "Maternidade em flor",
+      "alt": "Gestante em momento íntimo"
+    },
+    {
+      "filename": "foto-3.jpg",
+      "caption": "Amor que cresce",
+      "alt": "Casal aguardando bebê"
+    }
+  ]
+}

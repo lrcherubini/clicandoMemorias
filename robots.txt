@@ -7,9 +7,8 @@ Allow: /
 Sitemap: https://clicandomemorias.com.br/sitemap.xml
 
 # Bloquear arquivos de configuração
-Disallow: /CNAME
-Disallow: /README.md
 Disallow: /.git/
+Disallow: /documentation/
 
 # User-agents específicos
 User-agent: Googlebot

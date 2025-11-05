@@ -38,6 +38,7 @@
     <link rel="canonical" href="https://clicandomemorias.com.br/">
     
     <!-- Favicon -->
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -209,7 +210,7 @@
             </p>
 
             <div class="portfolio-grid">
-                <article class="portfolio-item">
+                <article class="portfolio-item" data-gallery="familias">
                     <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&h=600&fit=crop" 
                          alt="Ensaio de família ao ar livre em Joinville" 
                          class="portfolio-img"
@@ -217,9 +218,10 @@
                     <div class="portfolio-overlay">
                         <h3>Famílias</h3>
                         <p>Momentos de conexão e leveza no cotidiano</p>
+                        <span class="view-gallery">Ver galeria</span>
                     </div>
                 </article>
-                <article class="portfolio-item">
+                <article class="portfolio-item" data-gallery="gestantes">
                     <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=600&h=600&fit=crop" 
                          alt="Ensaio gestante em Joinville" 
                          class="portfolio-img"
@@ -227,9 +229,10 @@
                     <div class="portfolio-overlay">
                         <h3>Gestantes</h3>
                         <p>A espera traduzida em luz e afeto</p>
+                        <span class="view-gallery">Ver galeria</span>
                     </div>
                 </article>
-                <article class="portfolio-item">
+                <article class="portfolio-item" data-gallery="15anos">
                     <img src="https://images.unsplash.com/photo-1524638431109-93d95c968f03?w=600&h=600&fit=crop" 
                          alt="Ensaio de 15 anos em Joinville" 
                          class="portfolio-img"
@@ -237,6 +240,7 @@
                     <div class="portfolio-overlay">
                         <h3>15 Anos</h3>
                         <p>Celebrando transições com autenticidade</p>
+                        <span class="view-gallery">Ver galeria</span>
                     </div>
                 </article>
             </div>
@@ -432,8 +436,21 @@
         </div>
     </footer>
 
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+        <div class="lightbox-content">
+            <img src="" class="lightbox-image" alt="Imagem da galeria">
+            <div class="lightbox-caption"></div>
+            <div class="lightbox-counter"></div>
+            <button class="lightbox-close" aria-label="Fechar galeria">&times;</button>
+            <button class="lightbox-prev" aria-label="Foto anterior">&#10094;</button>
+            <button class="lightbox-next" aria-label="Próxima foto">&#10095;</button>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/main.js"></script>
     <script src="js/form-handler.js"></script>
+    <script src="js/lightbox.js"></script>
 </body>
 </html>
