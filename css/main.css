@@ -749,3 +749,213 @@ footer p {
     outline: 2px solid var(--accent-primary);
     outline-offset: 2px;
 }
+
+/* ===================================
+   LIGHTBOX STYLES
+   Adicione este código ao final do main.css
+   =================================== */
+
+/* Lightbox Container */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+/* Lightbox Content */
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Lightbox Image */
+.lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+    border-radius: 5px;
+}
+
+/* Lightbox Caption */
+.lightbox-caption {
+    color: var(--white);
+    text-align: center;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-style: italic;
+    max-width: 600px;
+}
+
+/* Lightbox Counter */
+.lightbox-counter {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--white);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Close Button */
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    color: var(--white);
+    font-size: 40px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    border-radius: 50%;
+    transition: var(--transition);
+    line-height: 1;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    background: var(--accent-primary);
+    transform: rotate(90deg);
+    outline: none;
+}
+
+/* Navigation Buttons */
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--white);
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    font-size: 30px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 5px;
+    z-index: 10000;
+}
+
+.lightbox-prev:hover,
+.lightbox-prev:focus,
+.lightbox-next:hover,
+.lightbox-next:focus {
+    background: var(--accent-primary);
+    outline: none;
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+/* Indicador visual nos portfolio items */
+.portfolio-item {
+    position: relative;
+}
+
+.view-gallery {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: var(--accent-primary);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.portfolio-item:hover .view-gallery {
+    background: var(--accent-secondary);
+    transform: scale(1.05);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .lightbox-counter {
+        top: 10px;
+        right: 60px;
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+    
+    .lightbox-prev,
+    .lightbox-next {
+        padding: 10px 15px;
+        font-size: 24px;
+    }
+    
+    .lightbox-prev {
+        left: 10px;
+    }
+    
+    .lightbox-next {
+        right: 10px;
+    }
+    
+    .lightbox-caption {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+    
+    .lightbox-image {
+        max-height: 70vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .lightbox-prev,
+    .lightbox-next {
+        bottom: 20px;
+        top: auto;
+        transform: none;
+    }
+    
+    .lightbox-prev {
+        left: 20px;
+    }
+    
+    .lightbox-next {
+        right: 20px;
+    }
+}

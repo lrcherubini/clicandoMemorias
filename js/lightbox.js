@@ -1,10 +1,16 @@
 // ===================================
-// Lightbox Gallery System
+// Lightbox Gallery System - FIXED
 // ===================================
  
 class PortfolioLightbox {
     constructor() {
         this.lightbox = document.getElementById('lightbox');
+        
+        if (!this.lightbox) {
+            console.error('Lightbox element not found!');
+            return;
+        }
+        
         this.lightboxImage = this.lightbox.querySelector('.lightbox-image');
         this.lightboxCaption = this.lightbox.querySelector('.lightbox-caption');
         this.lightboxCounter = this.lightbox.querySelector('.lightbox-counter');
@@ -20,12 +26,19 @@ class PortfolioLightbox {
     }
  
     init() {
+        console.log('Lightbox inicializado');
+        
         // Adicionar event listeners aos portfolio items
         const portfolioItems = document.querySelectorAll('.portfolio-item[data-gallery]');
+        console.log(`Encontrados ${portfolioItems.length} portfolio items`);
+        
         portfolioItems.forEach(item => {
+            item.style.cursor = 'pointer';
+            
             item.addEventListener('click', (e) => {
                 e.preventDefault();
                 const galleryName = item.getAttribute('data-gallery');
+                console.log(`Clicado na galeria: ${galleryName}`);
                 this.openGallery(galleryName);
             });
  
@@ -41,9 +54,15 @@ class PortfolioLightbox {
         });
  
         // Event listeners dos controles do lightbox
-        this.closeBtn.addEventListener('click', () => this.closeLightbox());
-        this.prevBtn.addEventListener('click', () => this.showPrevious());
-        this.nextBtn.addEventListener('click', () => this.showNext());
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.closeLightbox());
+        }
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => this.showPrevious());
+        }
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => this.showNext());
+        }
  
         // Fechar ao clicar no fundo
         this.lightbox.addEventListener('click', (e) => {
@@ -71,6 +90,7 @@ class PortfolioLightbox {
     }
  
     async openGallery(galleryName) {
+        console.log(`Abrindo galeria: ${galleryName}`);
         this.currentGalleryName = galleryName;
  
         // Carregar imagens da galeria
@@ -78,89 +98,105 @@ class PortfolioLightbox {
  
         if (this.currentGallery.length === 0) {
             console.warn(`Nenhuma imagem encontrada para a galeria: ${galleryName}`);
-            alert('Esta galeria ainda não possui imagens.');
+            alert('Esta galeria ainda não possui imagens. Por favor, adicione as fotos reais do portfólio.');
             return;
         }
  
+        console.log(`Galeria carregada com ${this.currentGallery.length} imagens`);
         this.currentIndex = 0;
         this.showImage(this.currentIndex);
         this.openLightbox();
     }
  
     async loadGalleryImages(galleryName) {
-        // Tentar carregar imagens da galeria
-        // Como estamos em ambiente estático, vamos buscar por um arquivo JSON
-        // ou tentar carregar imagens conhecidas
- 
+        // Primeiro, tentar carregar o gallery.json
         try {
-            // Tentar carregar configuração de galeria
-            const response = await fetch(`/images/portfolio/${galleryName}/gallery.json`);
+            const jsonPath = `images/portfolio/${galleryName}/gallery.json`;
+            console.log(`Tentando carregar: ${jsonPath}`);
+            
+            const response = await fetch(jsonPath);
             if (response.ok) {
                 const data = await response.json();
+                console.log('Gallery.json carregado:', data);
+                
                 this.currentGallery = data.images.map(img => ({
-                    src: `/images/portfolio/${galleryName}/${img.filename}`,
+                    src: `images/portfolio/${galleryName}/${img.filename}`,
                     caption: img.caption || '',
                     alt: img.alt || `Foto da galeria ${galleryName}`
                 }));
-            } else {
-                // Fallback: tentar carregar imagens com nomes padrão
-                this.currentGallery = await this.tryLoadDefaultImages(galleryName);
+                
+                return;
             }
         } catch (error) {
-            console.log('Tentando carregar imagens padrão...');
-            this.currentGallery = await this.tryLoadDefaultImages(galleryName);
+            console.log('Erro ao carregar gallery.json, tentando método alternativo...', error);
         }
+        
+        // Fallback: tentar carregar imagens com nomes padrão
+        this.currentGallery = await this.tryLoadDefaultImages(galleryName);
     }
  
     async tryLoadDefaultImages(galleryName) {
-        // Tentar carregar até 20 imagens com nomes sequenciais
+        console.log('Tentando carregar imagens padrão...');
         const images = [];
         const extensions = ['jpg', 'jpeg', 'png', 'webp'];
  
+        // Tentar com foto-1, foto-2, etc.
         for (let i = 1; i <= 20; i++) {
             for (let ext of extensions) {
                 const filename = `foto-${i}.${ext}`;
-                const src = `/images/portfolio/${galleryName}/${filename}`;
+                const src = `images/portfolio/${galleryName}/${filename}`;
  
                 if (await this.imageExists(src)) {
                     images.push({
                         src: src,
-                        caption: '',
+                        caption: `Foto ${i}`,
                         alt: `Foto ${i} da galeria ${galleryName}`
                     });
-                    break; // Encontrou com esta extensão, pular para próximo número
+                    console.log(`Imagem encontrada: ${src}`);
+                    break;
                 }
             }
         }
  
-        // Se não encontrou nenhuma imagem, tentar também com nomes sem número
+        // Se não encontrou, tentar com 1.jpg, 2.jpg, etc.
         if (images.length === 0) {
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i <= 10; i++) {
                 for (let ext of extensions) {
                     const filename = `${i}.${ext}`;
-                    const src = `/images/portfolio/${galleryName}/${filename}`;
+                    const src = `images/portfolio/${galleryName}/${filename}`;
  
                     if (await this.imageExists(src)) {
                         images.push({
                             src: src,
-                            caption: '',
+                            caption: `Foto ${i}`,
                             alt: `Foto ${i} da galeria ${galleryName}`
                         });
+                        console.log(`Imagem encontrada: ${src}`);
                         break;
                     }
                 }
             }
         }
  
+        console.log(`Total de imagens encontradas: ${images.length}`);
         return images;
     }
  
     imageExists(url) {
         return new Promise((resolve) => {
             const img = new Image();
-            img.onload = () => resolve(true);
-            img.onerror = () => resolve(false);
+            img.onload = () => {
+                console.log(`✓ Imagem existe: ${url}`);
+                resolve(true);
+            };
+            img.onerror = () => {
+                console.log(`✗ Imagem não existe: ${url}`);
+                resolve(false);
+            };
             img.src = url;
+            
+            // Timeout de 3 segundos
+            setTimeout(() => resolve(false), 3000);
         });
     }
  
@@ -169,6 +205,8 @@ class PortfolioLightbox {
  
         this.currentIndex = index;
         const image = this.currentGallery[index];
+ 
+        console.log(`Mostrando imagem ${index + 1}:`, image);
  
         // Animação de transição
         this.lightboxImage.style.opacity = '0';
@@ -204,17 +242,18 @@ class PortfolioLightbox {
     }
  
     openLightbox() {
+        console.log('Abrindo lightbox');
         this.lightbox.classList.add('active');
         this.lightbox.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden'; // Prevenir scroll da página
+        document.body.style.overflow = 'hidden';
     }
  
     closeLightbox() {
+        console.log('Fechando lightbox');
         this.lightbox.classList.remove('active');
         this.lightbox.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = ''; // Restaurar scroll
+        document.body.style.overflow = '';
  
-        // Limpar imagem após fechar
         setTimeout(() => {
             this.lightboxImage.src = '';
             this.lightboxCaption.textContent = '';
@@ -225,5 +264,10 @@ class PortfolioLightbox {
  
 // Inicializar quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
-    new PortfolioLightbox();
+    console.log('DOM carregado, inicializando lightbox...');
+    
+    // Pequeno delay para garantir que tudo foi carregado
+    setTimeout(() => {
+        new PortfolioLightbox();
+    }, 100);
 });

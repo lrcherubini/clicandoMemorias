@@ -3,17 +3,17 @@
   "description": "Momentos de conexão e leveza no cotidiano",
   "images": [
     {
-      "filename": "foto-1.jpg",
+      "filename": "photo-1.jpeg",
       "caption": "Família reunida no parque",
       "alt": "Ensaio de família ao ar livre em Joinville"
     },
     {
-      "filename": "foto-2.jpg",
+      "filename": "photo-2.jpeg",
       "caption": "Momentos de conexão",
       "alt": "Pais brincando com filhos"
     },
     {
-      "filename": "foto-3.jpg",
+      "filename": "photo-3.jpeg",
       "caption": "Amor em família",
       "alt": "Abraço familiar"
     }
